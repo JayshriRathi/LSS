@@ -1,0 +1,35 @@
+#!/bin/bash
+
+file_path="https://www.pdfdrive.com/head-first-kotlin-d196919920.html"
+
+file_type=$(file -b "$file_path")
+
+if [[ $file_type == *".mp3"* ]]; then
+    echo "The file is an audio file."
+
+wget "$file_path" -P  ~/Music/ "$file_extension"
+echo "File downloaded successfully as 'downloaded_file$file_extension'"
+
+elif [[ $file_type == *".mp4"* ]]; then
+    echo "The file is a video file."
+
+wget "$file_path" -P  ~/Videos/ "$file_extension"
+echo "File downloaded successfully as 'downloaded_file$file_extension'"
+
+elif [[ $file_type == *".jpg"* ]]; then
+    echo "The file is an a image file."
+
+wget "$file_path" -P  ~/Pictures/ "$file_extension"
+echo "File downloaded successfully as 'downloaded_file$file_extension'"
+
+elif [[ $file_type == *".pdf"* ]]; then
+    echo "The file is a PDF file."
+
+wget "$file_path" -P  ~/Documents/ "$file_extension"
+echo "File downloaded successfully as 'downloaded_file$file_extension'"
+
+else
+    echo "The file type is not recognized as audio or video."
+fi
+
+
